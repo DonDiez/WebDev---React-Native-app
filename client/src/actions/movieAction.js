@@ -7,7 +7,7 @@ time this function is called. Gets page so the backend know which movies to give
    Checks if sort is checked as well*/
    export const fetchAllMovies = (page) => dispatch =>{
     
-    fetch("http://it2810-04.idi.ntnu.no:3003/alpha/all&page="+page)
+    fetch("http://192.168.0.148:3003/alpha/all&page="+page)
     .then(res => res.json())
     .then(resJSON => 
         dispatch({
@@ -39,7 +39,7 @@ export const fetchMoviesByTitle = (title, page, byDate) => dispatch =>{
       sort = "date"
   }
   let search = title.replace(" ", "+")
-  fetch("http://it2810-04.idi.ntnu.no:3003/"+sort+"/title="+search+"&page="+page)
+  fetch("http://192.168.0.148:3003/"+sort+"/title="+search+"&page="+page)
   .then(res => res.json())
   .then(resJSON => 
       dispatch({
@@ -66,7 +66,7 @@ Gets page so the backend know which movies to give
         genreList += genres[i] + "+";
       }
     genreList = genreList.slice(0,-1)
-    fetch("http://it2810-04.idi.ntnu.no:3003/"+sort+"/genres="+genreList+"&page=" + page)
+    fetch("http://192.168.0.148:3003/"+sort+"/genres="+genreList+"&page=" + page)
     .then(res => res.json())
     .then(resJSON => 
         dispatch({
@@ -95,7 +95,7 @@ export const fetchFilteredTitleMovies = (page, title, genres, byDate) => dispatc
     genreList = genreList.slice(0,-1)
     let search = title.replace(" ", "+")
 
-    fetch("http://it2810-04.idi.ntnu.no:3003/f/"+sort+"/title="+search+"&genre="+genreList+"&page=" + page)
+    fetch("http://192.168.0.148:3003/f/"+sort+"/title="+search+"&genre="+genreList+"&page=" + page)
     .then(res => res.json())
     .then(resJSON => 
         dispatch({
@@ -109,7 +109,7 @@ export const fetchFilteredTitleMovies = (page, title, genres, byDate) => dispatc
 /* Gets triggered when the user clicks on a category in the wordcloud
 Fetches 10 movies in a given category*/
 export const fetchOneCategory = (category, page) => dispatch =>{
-    fetch("http://it2810-04.idi.ntnu.no:3003/alpha/genres="+category+"&page=" + page)
+    fetch("http://192.168.0.148:3003/alpha/genres="+category+"&page=" + page)
     .then(res => {
         return res.json()
     })
@@ -127,7 +127,7 @@ export const fetchOneCategory = (category, page) => dispatch =>{
 Fetches 10 movies, sorted by number of votes, showing the highest
 number of votes first*/
 export const fetchMostPopular = (page) => dispatch =>{
-    fetch("http://it2810-04.idi.ntnu.no:3003/vote/all&page=" + page)
+    fetch("http://192.168.0.148:3003/vote/all&page=" + page)
     .then(res => {
         return res.json()
     })

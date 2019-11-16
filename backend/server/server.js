@@ -5,7 +5,7 @@ let cors = require('cors')
 let app = express()
 let port = 3003
 let password = ""
-let url = 'mongodb://tartarus:'+password+'@localhost/DB'
+let url = 'mongodb://localhost/DB'
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));

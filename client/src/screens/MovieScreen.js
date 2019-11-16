@@ -86,7 +86,7 @@ _storeVote = async(movieObject,up_or_down,func) =>{
   let id = movieObject._id.toString()
   AsyncStorage.getItem(id).then(result => {
     if (result!=="voted"){
-      axios.post("http://it2810-04.idi.ntnu.no:3003/vote/id="+id+"&vote="+up_or_down).then(res => res.data)
+      axios.post("http://192.168.0.148:3003/vote/id="+id+"&vote="+up_or_down).then(res => res.data)
       .then(feedback=> {
         if (feedback.Status==="OK"){
           AsyncStorage.setItem(id,"voted")
@@ -112,7 +112,7 @@ _storeVote = async(movieObject,up_or_down,func) =>{
         hideOnPress: true,
         delay: 0}))
     }else{
-      fetch("http://it2810-04.idi.ntnu.no:3003/id="+id).then(res => res.json()).then(res => 
+      fetch("http://192.168.0.148:3003/id="+id).then(res => res.json()).then(res => 
       Toast.show("Already voted!\nCurrent votes: "+res.Votes, {
         duration: Toast.durations.LONG,
         position: Toast.positions.CENTER,
